@@ -1,8 +1,20 @@
+// cypress/e2e/sort-by-price.cy.js
+
 // @ts-check
 
 // enables intelligent code completion for Cypress commands
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
+
+// the markdown is as follows
+// <div class="inventory_item">
+//   <div class="inventory_item_description">
+//     <div class="inventory_item_label">
+//       <div class="inventory_item_name">Sauce Labs Backpack</div>
+//       <div class="inventory_item_desc">...</div>
+//     </div>
+//   </div>
+// </div>
 
 // https://github.com/bahmutov/cypress-map
 import 'cypress-map'
@@ -21,13 +33,13 @@ describe('sorting', () => {
   })
 
   /**
-   * Sorts item by price
-   * @param {'lohi'|'hilo'} order
+   * Sorts item by price or name
+   * @param {'lohi'|'hilo'|'az'|'za'} order
    */
-  function sortByPrice(order) {
+  function sortBy(order) {
     // confirm the argument value at runtime
-    expect(order, 'sort order').to.be.oneOf(['lohi', 'hilo'])
-    cy.log(`**sort by price ${order}**`)
+    expect(order, 'sort order').to.be.oneOf(['lohi', 'hilo', 'az', 'za'])
+    cy.log(`**sort by ${order}**`)
     cy.get('[data-test="product_sort_container"]').select(order)
   }
 
@@ -40,18 +52,30 @@ describe('sorting', () => {
       .print('sorted prices %o')
   }
 
+  function getNames() {
+    return cy.get('.inventory_item_name').map('innerText').print('items %o')
+  }
+
   it('by price lowest to highest', () => {
-    sortByPrice('lohi')
+    sortBy('lohi')
     getPrices().should('be.ascending')
   })
 
   it('by price highest to lowest', () => {
-    sortByPrice('hilo')
+    sortBy('hilo')
     // confirm the item prices are sorted from highest to lowest
     getPrices().should('be.descending')
   })
 
-  it('by name from A to Z')
+  it('by name from A to Z', () => {
+    sortBy('az')
+    getNames().should('be.ascending')
+  })
 
-  it('by name from Z to A')
+  it('by name from Z to A', () => {
+    sortBy('za')
+    getNames().should('be.descending')
+  })
 })
+
+
