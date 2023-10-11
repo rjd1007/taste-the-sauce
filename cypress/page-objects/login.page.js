@@ -26,4 +26,16 @@ export const LoginPage = {
     LoginPage.getUsername().should('have.class', 'error')
     LoginPage.getPassword().should('have.class', 'error')
   },
+  login(username, password) {
+    // https://on.cypress.io/session
+    cy.session(`user ${username} login`, () => {
+      cy.log('**log in**')
+      cy.visit('/')
+      LoginPage.getUsername().type(username)
+      // hide the password from the Console Log
+      LoginPage.getPassword().type(password, { log: false })
+      LoginPage.getLogin().click()
+      cy.location('pathname').should('equal', '/inventory.html')
+    })
+  },
 }
