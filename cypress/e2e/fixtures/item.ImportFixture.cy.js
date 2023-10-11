@@ -8,7 +8,7 @@
 
 // import the bike light JSON fixture file
 // using the relative path
-import item from '../fixtures/bike-light.json'
+import item from '../../fixtures/bike-light.json'
 
 beforeEach(() => {
   cy.log('**log in**')
