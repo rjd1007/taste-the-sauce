@@ -1,0 +1,18 @@
+Some people have noticed similarities between cy.dataSession command implemented by plugin
+cypress-data-session and the cy.session command included in Cypress itself. 
+Here is my table of differences.
+
+| Feature                   | cy.session                | cy.dataSession |
+| ------------------------- | ------------------------- | -------------- |
+| Command is                | official ✅               | communnity 🎁   |
+| Can cache                 | the browser session state | anything       |
+| Stability                 | production                | production     |
+| Cache across specs        | yes                       | yes            |
+| Access to the cached data | no                        | yes            |
+| Custom validation         | no                        | yes            |
+| Custom restore            | no                        | yes            |
+| Dependent caching         | no                        | yes            |
+| Static utility methods    | limited                   | all            |
+| GUI integration           | yes                       | no             |
+| Should you use it?        | maybe                     | yes            |
+| Cypress version support   | newer versions            | all            |
