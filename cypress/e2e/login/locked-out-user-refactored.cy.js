@@ -16,7 +16,7 @@
 // Tip: I did not move the command cy.get('[data-test="login-button"]').click() into the page object yet. 
 // When I use the same command from other specs and find myself duplicating it, I would move it.
 
-import { LoginPage } from '../page-objects/login.page'
+import { LoginPage } from '../../page-objects/login.page'
 
 it('shows a login error refactored', () => {
   cy.visit('/')

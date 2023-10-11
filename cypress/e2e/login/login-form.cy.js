@@ -4,7 +4,7 @@
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
 
-import { LoginPage } from '../page-objects/login.page'
+import { LoginPage } from '../../page-objects/login.page'
 
 describe('Login form', () => {
   // visit the login page before each test

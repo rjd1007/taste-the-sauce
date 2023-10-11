@@ -4,7 +4,7 @@
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
 
-import { LoginPage } from '../page-objects/login.page'
+import { LoginPage } from '../../page-objects/login.page'
 
 describe('anonymous user', () => {
   it('gets an error trying to visit the inventory page', () => {
