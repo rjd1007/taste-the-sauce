@@ -1,4 +1,4 @@
-// cypress/e2e/login.page.js
+// cypress/page-objects/login.page.js
 
 // @ts-check
 /// <reference types="cypress" />
